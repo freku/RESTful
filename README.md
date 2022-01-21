@@ -1,4 +1,5 @@
-##Products Catalog API:
+## Products Catalog API:
+
     * POST /api/product [Creates new product]
         With needed fields 'title' and 'price'. 
             Example: {"title": "Cake", "price": "4.99 USD"}
@@ -26,7 +27,8 @@
             {"code":200,"products":[ArrayOfProducts]}
 
 
-##Cart API:
+## Cart API:
+
     * POST /api/cart [Create a cart]
         Results with:
             {"code":200,"id":1}
@@ -45,7 +47,7 @@
         Results with (when no products were added):
             {"code":200,"products":[],"total_price":"0 USD"}
 
-##To run tests:
+## To run tests:
 ```
 php bin/console --env=test doctrine:database:create
 php bin/console --env=test doctrine:schema:create
