@@ -47,6 +47,11 @@
         Results with (when no products were added):
             {"code":200,"products":[],"total_price":"0 USD"}
 
+## To initialize 5 catalog products:
+```
+php bin/console doctrine:fixtures:load
+```
+
 ## To run tests:
 ```
 php bin/console --env=test doctrine:database:create
