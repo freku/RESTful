@@ -1,0 +1,63 @@
+PRODUCT:
+    POST:
+        - /api/product [correct data] - 200 OK
+        - /api/product [missing field/s] - 4    00 Bad Request
+        - /api/product/1 - 405 Method Not Allowed
+    GET:
+        - /api/product - 200 OK ( product with id 1 )
+        - /api/product/0 - 400 Bad Request
+        - /api/product/1 - 200 OK
+        - /api/product/999 - 400 Bad Request ( product does not exist error )
+    PUT:
+        - /api/product - 405 Method Not Allowed
+        - /api/product/1 [correct data] - 200 OK
+        - /api/product/999 [correct data] - 400 Bad Request
+    DELETE:
+        - /api/product - 405 Method Not Allowed
+        - /api/product/2 - 200 OK
+        - /api/product/2 [doesn't exist anymore] - 400 Bad Request
+        - /api/product
+    GET /list:
+        - /api/product/list - 200 OK
+        - /api/product/list/ - 200 OK
+        - /api/product/list/1 - 200 OK
+        - /api/product/list/99 - 400 Bad Request
+        - /api/product/list/0 - 400 Bad Request
+
+CART:
+    POST:
+        - /api/cart - 200 OK
+    PUT add:
+        - /api/cart/1/add-product/1 - 200 OK
+        - /api/cart/1/add-product/1 [product already added] - 400 Bad Request
+        - /api/cart/0/add-product/1 - 400 Bad Request ( no cart with that id )
+        - /api/cart/1/add-product/99 - 400 Bad Request ( no product with that id )
+        - test that you can't add more than 3 products to one cart - 400 Bad Request
+    PUT remove:
+        - /api/cart/1/remove-product/1 - 200 OK ( product was already added )
+        - test if it rejects if product is not in the cart - 400 Bad Request
+        - /api/cart/0/remove-product/1 - 400 Bad Request
+        - test all bad ids too - 400 Bad Request
+    GET list:
+        - /api/cart/1/list - 200 OK
+        - assert json content
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
